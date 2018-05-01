@@ -13,3 +13,5 @@ module Airbnb
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+# require 'carrierwave/orm/activerecord'
+require "mini_magick"

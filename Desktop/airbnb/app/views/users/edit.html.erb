@@ -1,0 +1,39 @@
+
+
+
+<%=image_tag(@user.image[0].thumb.url,:class => "profile-photo1") if @user.image?%>
+<br>
+<br>
+
+<strong class="title">Email</strong>
+<h4 class="content"><%=@user.email%></h4>
+<br>
+<br>
+
+<%= form_for(@user, url: profile_edit_path, html: {method: "post"}) do |form| %> 
+<!-- <%#=form_for :user, url: "/profile/edit",action: :update, method: :post do |form|%> -->
+<strong class="title">First Name</strong>
+<h4 class="content"><%=form.text_field :first_name, :value => @user.first_name %></h4>
+<br>
+<br>
+<strong class="title">Last Name</strong>
+<h4 class="content"><%=form.text_field :last_name, :value => @user.last_name %></h4>
+<br>
+<br>
+<strong class="title">Birthday</strong>
+<h4 class="content"><%=form.date_field :birthday, :value => @user.birthday %></h4>
+<br>
+<br>
+<strong class="title">Profile Photo</strong>
+<h4 class="content"><%=form.file_field :image, multiple:true %></h4>
+
+
+<%=form.submit 'Update'%>
+<%end%>
+<br>
+<%= link_to 'Reset Password', "users/#{@user.id}/password/edit" %> 
+
+
+
+
+

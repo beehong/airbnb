@@ -13,7 +13,7 @@ def create_from_omniauth
   else
     user = User.create_with_auth_and_hash(authentication, auth_hash)
     # you are expected to have a path that leads to a page for editing user details
-    @next = edit_user_path(user)
+    @next = root_url
     @notice = "User created. Please confirm or edit details"
   end
 
@@ -21,4 +21,4 @@ def create_from_omniauth
   redirect_to @next, :notice => @notice
 end
 end
-RUBY
+

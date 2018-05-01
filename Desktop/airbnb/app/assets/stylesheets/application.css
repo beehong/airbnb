@@ -13,3 +13,66 @@
  *= require_tree .
  *= require_self
  */
+
+.card-mb-15 {
+	margin-bottom: 15px;
+}
+
+.paginate {
+	margin: auto;
+	width: 10%;
+}
+
+body{
+	background-color: lightgrey;
+}
+
+.profile-photo{
+	height:40px;
+	width:40px;
+	border-radius: 50%;
+	
+}
+
+.profile-photo1{
+	height:400px;
+	width:400px;
+	border-radius: 50%;
+	
+}
+
+
+
+.listing-photo{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+a:hover{
+	background-color: lightgrey;
+}
+
+.profile{
+	font-size: 80px,
+}
+
+.title{
+	font-size: 40px;
+	color:#119199;
+}
+
+.content{
+	font-size: 30px;
+}
+
+.reservation{
+	border: 1px solid black;
+	border-top-style: dotted;
+    border-right-style: solid;
+    border-bottom-style: dotted;
+    border-left-style: solid;
+	font-size: 20px;
+}
+
+

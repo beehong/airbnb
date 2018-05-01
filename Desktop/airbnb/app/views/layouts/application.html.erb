@@ -1,12 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <%= javascript_include_tag 'application' %>
+
   <%= csrf_meta_tag %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <%= stylesheet_link_tag 'application' %>
 </head>
 <body>
-  
+
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- <div class="navbar-header"> -->
+          
+          <a class="navbar-brand text-danger font-weight-bold" href="/">AirBnB.</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <!-- </div> -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+
+            <%= link_to "Home", root_path, class: "nav-link" %></li>
+            <% if signed_in? %>
+
+            <li class="nav-item"><a class="nav-link" href="/listings">Listing</a></li>
+            
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search">
+              <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+          
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item"><a class="nav-link btn-danger" href="#" class="btn btn-danger add_question text-white" data-toggle="modal" data-target="#exampleModalCenter">Add Question</a></li>
+
+            
+     
+            <%=image_tag((current_user.image[0].thumb.url), :class=> "profile-photo") if current_user.image?%>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <%= current_user.last_name %>
+              </a>
+
+              <%if current_user.customer?%>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/listings/new">Be A Host</a>
+                 <a class="dropdown-item" href="/reservation/host">Host Dashboard</a>
+                <a class="dropdown-item" href="/profile">Profile</a>
+                <a class="dropdown-item" href="/reservation">Reservation</a>
+                <div class="dropdown-divider"></div>
+                <%= link_to "Sign Out", sign_out_path, method: :delete, class: "dropdown-item" %>
+              </div>
+              <%else%>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/reservation">Reservation</a>
+                <a class="dropdown-item" href="/profile">Profile</a>
+              <div class="dropdown-divider"></div>
+                <%= link_to "Sign Out", sign_out_path, method: :delete, class: "dropdown-item" %>
+              </div
+              <%end%>
+
+                
+            </li>
+          </ul>
+          <% else %>
+            <a class="nav-link btn-danger" href="/sign_in">Sign in</a>
+           
+          <% end %>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+  <% flash.each do |key, value| %>
+        <%= value %>
+      <% end %>
+
+      
 
   <%= yield %>
 </body>
