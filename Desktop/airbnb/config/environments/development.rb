@@ -52,6 +52,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.active_job.queue_adapter = :sidekiq
   config.action_mailer.default_url_options = { host: 'localhost:3000'}
 
   ##this is for open another webpage by not sending an email
@@ -77,4 +78,5 @@ config.action_mailer.default_options = {from: 'babiboleh@gmail.com'}
   password:             'admina11@@',
   authentication:       'login',
   enable_starttls_auto: true  }
+
 end

@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
 	    @reservation = Reservation.new(reservation_params)
 	    if date_checker(@reservation.start_date, @reservation.end_date)
 		      if @reservation.save
-		      	ReservationMailer.booking_email(current_user, @listing.user, @reservation.id).deliver_now
+		      	ReservationJob.perform_later(current_user, @listing.user, @reservation.id)
 		        redirect_to @reservation ,notice: 'Reservation was successfully created.'
 		      else
 		        @listing = Listing.find(@reservation.listing_id)
