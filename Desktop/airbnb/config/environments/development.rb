@@ -54,4 +54,27 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost:3000'}
 
+  ##this is for open another webpage by not sending an email
+  # config.action_mailer.delivery_method = :letter_opener
+  # config.action_mailer.perform_deliveries = true
+
+config.action_mailer.delivery_method = :sendmail
+# Defaults to:
+# config.action_mailer.sendmail_settings = {
+#   location: '/usr/sbin/sendmail',
+#   arguments: '-i'
+# }
+config.action_mailer.perform_deliveries = true
+config.action_mailer.raise_delivery_errors = false
+config.action_mailer.default_options = {from: 'babiboleh@gmail.com'}
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'gmail.com',
+  user_name:            'babiboleh@gmail.com',
+  password:             'admina11@@',
+  authentication:       'login',
+  enable_starttls_auto: true  }
 end

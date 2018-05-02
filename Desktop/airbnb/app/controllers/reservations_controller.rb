@@ -20,10 +20,11 @@ class ReservationsController < ApplicationController
 
 
 	def create
-
+		@listing = Listing.find(params[:id])
 	    @reservation = Reservation.new(reservation_params)
 	    if date_checker(@reservation.start_date, @reservation.end_date)
 		      if @reservation.save
+		      	ReservationMailer.booking_email(current_user, @listing.user, @reservation.id).deliver_now
 		        redirect_to @reservation ,notice: 'Reservation was successfully created.'
 		      else
 		        @listing = Listing.find(@reservation.listing_id)
