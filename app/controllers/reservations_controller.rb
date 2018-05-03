@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
 	def new
 		@reservation = Reservation.new
 		@listing = Listing.find(params[:id])
+		# @days = Reservation.find(params[:id]).end_date - Reservation.find(params[:id]).start_date
 	end
 
 	def find

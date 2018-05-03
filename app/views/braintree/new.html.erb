@@ -1,4 +1,4 @@
-<%= form_for :checkout_form, url: braintree_checkout_path, html: { id: "cardForm"} do |form| %>
+
 
 
 
@@ -16,14 +16,14 @@
     <div id="cvv" class="hosted-field"></div>
 
     <%= form.hidden_field "payment_method_nonce" %>
-    <%= form.text_field "queen_bee" %>
+    
 
     <div class="button-container">
       <%= form.submit "Purchase", disabled: true, class: "btn btn-primary", id: "submit-payment-btn" %>
     </div>
   <% end %>
 </div>
-  <%end%>
+  
 
 <!-- Load the required client component. -->
 <script src="https://js.braintreegateway.com/web/3.6.3/js/client.min.js"></script>

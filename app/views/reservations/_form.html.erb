@@ -8,17 +8,18 @@
 
   <div class="field">
     <%= f.label :end_date %>
-    <%= f.date_field :end_date %>
+    <%= f.date_field :end_date%>
   </div>
 
   <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price, :value => @listing.price %>
   </div>
-
+ 
+  
   <div class="field">
     <%= f.label :total %>
-    <%= f.number_field :total, :value =>@listing.price%>
+    <%= f.number_field :total%>
   </div>
 
     <div class="field">
@@ -36,6 +37,34 @@
   </div>
 <% end %>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js"></script>
 <script>
-  var start_date = 
+
+$(document).ready(function(){
+
+  // $(the name inside is the id name)
+  let startDate = $("#reservation_start_date")
+  let endDate = $("#reservation_end_date")
+  let price = <%= @listing.price %> 
+
+  const getDateRange = function(){
+    if (startDate.value != "" && endDate !=""){
+      checkout = new Date(endDate.val()) 
+      checkin = new Date(startDate.val())
+      console.log(checkout)
+      console.log(checkin)
+      var days = (checkout - checkin) /1000 / 60/ 60/ 24 
+        console.log(days)
+        console.log()
+      $('#reservation_total').val(days * price) 
+    }
+  }
+
+  startDate.change(getDateRange)
+
+  endDate.change(getDateRange)
+});
+
 </script>
+
+ 

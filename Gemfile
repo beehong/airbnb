@@ -44,6 +44,8 @@ gem 'carrierwave', '~> 1.0'
 gem 'braintree'
 gem 'sidekiq'
 gem 'rails_12factor'
+gem 'skylight'
+gem 'newrelic_rpm'
 gem "letter_opener", :group => :development
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

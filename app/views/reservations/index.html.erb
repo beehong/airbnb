@@ -17,7 +17,7 @@
     <td class="reservation"><%=x.end_date%></td>
     <td class="reservation"><%=x.listing.name%></td>
     <td class="reservation"><%=x.listing.address%></td>
-    <td><%= link_to "Make Payment", braintree_new_path %></td>
+    <td><%= link_to "Make Payment", "braintree/#{x.id}" %></td>
 </tr>
 
 </table>
