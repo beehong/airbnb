@@ -1,0 +1,28 @@
+
+
+
+<div class="container">
+	<div class="row">
+		<% @listing.order('id desc').each do |l| %>
+		<div class="col-sm-3 card-mb-15">
+			<div class="card">
+
+			<%=image_tag(l.property[0].thumb.url) if l.property?%>
+			  
+			  <div class="card-body">
+			    <h5 class="card-title"><%=l.name%></h5>
+			    <p class="card-text"><%=l.country%></p>
+			    <p><%= button_to 'Check it out',"/listings/#{l.id}"%></p>
+			  </div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+</div>
+
+<div class="paginate">
+<%= will_paginate @listing, :page_links => false %>
+</div>
+
+
+

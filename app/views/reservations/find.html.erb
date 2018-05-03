@@ -1,0 +1,23 @@
+<h1>Welcome <%=current_user.first_name%> <%=current_user.last_name%></h1>
+<h3>Reservation on Your Property</h3>
+
+<% @property.each do |x|%>
+	<% x.reservations.each do |a|%>
+<table>
+<tr>
+    <td class="reservation">Check in</td>
+    <td class="reservation">Check out</td>
+    <td class="reservation"> Property name</td>
+    <td class="reservation">Location</td>
+</tr>
+<br>
+<tr>
+    <td class="reservation"><%=a.start_date%></td>
+    <td class="reservation"><%=a.end_date%></td>
+    <td class="reservation"><%=a.listing.name%></td>
+    <td class="reservation"><%=a.listing.address%></td>
+</tr>
+</table>
+
+	<% end %>
+<%end%>

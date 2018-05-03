@@ -1,0 +1,114 @@
+  
+  <%if @listing.property?%>
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+  <%@listing.property.each_with_index do |x, index|%>
+     <%if index ==0 %>
+      <div class="carousel-item active">
+      <%else%>
+        <div class="carousel-item">
+      <%end%>
+
+      <%=image_tag x.url, width:800, height:500, :class => "listing-photo"%>
+        </div>
+  <%end%>
+
+      <%#=image_tag(@listing.property[0].thumb.url, width:1100, height:500) if @listing.property?%>
+    
+      <%#=image_tag(@listing.property[1].thumb.url, width:1100, height:500) if @listing.property?%>
+ 
+    
+      </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+  <%end%>
+</div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @listing.name %>
+</p>
+
+<p>
+  <strong>Property type:</strong>
+  <%= @listing.property_type %>
+</p>
+
+<p>
+  <strong>Room number:</strong>
+  <%= @listing.room_number %>
+</p>
+
+<p>
+  <strong>Bed number:</strong>
+  <%= @listing.bed_number %>
+</p>
+
+<p>
+  <strong>Guest number:</strong>
+  <%= @listing.guest_number %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @listing.country %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @listing.state %>
+</p>
+
+
+<p>
+  <strong>City:</strong>
+  <%= @listing.city %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @listing.zipcode %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @listing.address %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @listing.price %>
+</p>
+
+
+<p>
+  <strong>Description:</strong>
+  <%= @listing.description %>
+</p>
+
+
+
+
+
+
+<%if current_user.id == @listing.user_id%>
+<%= link_to 'Edit', edit_listing_path(@listing) %> 
+<%end%>
+<%= link_to 'Reservation', "/listings/#{@listing.id}/reservation/new" %><br>
+<%= link_to 'Back', listings_path %>

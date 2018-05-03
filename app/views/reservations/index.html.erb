@@ -1,0 +1,26 @@
+
+<h1>Welcome <%=current_user.first_name%> <%=current_user.last_name%></h1>
+<h3>Reservation made</h3>
+
+
+<% @reserve.each do |x|%>
+<table>
+<tr>
+    <td class="reservation">Check in</td>
+    <td class="reservation">Check out</td>
+    <td class="reservation"> Property name</td>
+    <td class="reservation">Location</td>
+</tr>
+<br>
+<tr>
+    <td class="reservation"><%=x.start_date%></td>
+    <td class="reservation"><%=x.end_date%></td>
+    <td class="reservation"><%=x.listing.name%></td>
+    <td class="reservation"><%=x.listing.address%></td>
+    <td><%= link_to "Make Payment", braintree_new_path %></td>
+</tr>
+
+</table>
+
+<% end %>
+

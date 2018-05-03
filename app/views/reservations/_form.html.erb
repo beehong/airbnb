@@ -1,0 +1,41 @@
+<%= form_for :reservation do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.number_field :price, :value => @listing.price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :total %>
+    <%= f.number_field :total, :value =>@listing.price%>
+  </div>
+
+    <div class="field">
+    
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+
+  <div class="field">
+  
+    <%= f.hidden_field :listing_id, :value => @listing.id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Book" %>
+  </div>
+<% end %>
+
+<script>
+  var start_date = 
+</script>
