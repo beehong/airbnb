@@ -3,9 +3,25 @@ class ListingsController < ApplicationController
  
   # GET /listings
   # GET /listings.json
-  def index
-	@listing = Listing.all
+
+  def search
+    # byebug
+    if params[:query].present?
+       @listing = Listing.search_country(params[:query])
+       # byebug
+         respond_to do |format|
+          format.html
+          format.json {render json: @listing}
+          format.js
+         end
+      else
+      @listing = Listing.all
+      end
   end
+
+   def index
+      @listing = Listing.all
+   end
 
   # GET /listings/1
   # GET /listings/1.json

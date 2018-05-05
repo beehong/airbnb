@@ -1,3 +1,50 @@
+ <h3 id="location">Enter the location that you looking for</h3>
+
+
+    <%= form_tag '/search', method: 'post', :id => 'form', :class => 'form-inline my-2 my-lg-0' do %>
+     <%= text_field_tag :query, "", :class =>'form-control mr-sm-2', list: "list" %>
+     <datalist id="list"> 
+    </datalist>
+      <%= submit_tag "Search",:id => 'searchBtn',:class => 'btn btn-outline-primary my-2 my-sm-0'%>
+      <% end %>
+
+<script type="text/javascript">
+
+  $('#query').on("keyup", function(){
+    autocomplete()
+  });
+
+
+  function autocomplete(){
+    let query = $("#query").serialize();
+
+    $.ajax({
+      url:'/search',
+      type:'POST',
+      data: $("#form").serialize(),
+      dataType:'json',
+      error: function(request, status, error){
+        console.log(error);
+        // console.log(request.responseText);
+        console.log("sorry. Something went wrong")
+      },
+      success: function(data){
+        console.log(data);
+        $("#list").html("");
+        data.forEach(function(element){
+          var option = document.createElement("option");
+          option.value = element;
+          // console.log(option);
+        
+          var list = $("#list");
+          list.append(option);
+         $('#optionVal').val(option);
+          console.log(list);
+        });
+      }
+    });
+  }
+</script>
 
 
 <h1>Listings</h1>

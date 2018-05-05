@@ -75,4 +75,13 @@ a:hover{
 	font-size: 20px;
 }
 
+#navbarDropdownMenuLink{
+	color:#ff8bb5;
+}
+
+#location{
+	font-size: 30px;
+	font-family: fantasy;
+	color: #3b3939;
+}
 
