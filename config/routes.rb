@@ -29,13 +29,13 @@ post "/listings/:id/reservation/new" => "reservations#create"
 
 post "/profile/edit" => "users#update"
 get "/profile" => 'users#edit'
-post "/listings/:id/preview" => "listings#preview"
 get "/listings/:id/preview" => "listings#preview"
 post "/listings/:id" => "listings#show"
 post "/listings/:id/verify" => "listings#verify"
 get "/auth/:provider/callback" => "sessions#create_from_omniauth"
 
 post "/search" => "listings#search"
+
 ##this is to link to google for sign in with google
 root to: "home#index"
 ##this is to point the rootpage to view/home/index.. every time to create a view, need to create a controller. 

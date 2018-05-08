@@ -1,0 +1,5 @@
+console.log("preview works")
+
+var img = "<%= j image_tag(@listing.property[0].thumb.url, width:1100, height:500) if @listing.property?%>"
+
+$('#image-show').append(img)

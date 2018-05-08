@@ -5,18 +5,20 @@ class ListingsController < ApplicationController
   # GET /listings.json
 
   def search
-    # byebug
     if params[:query].present?
        @listing = Listing.search_country(params[:query])
-       # byebug
-         respond_to do |format|
-          format.html
+       @list = Listing.search_by_country(params[:query])
+
+       respond_to do |format|
+          # format.html
           format.json {render json: @listing}
-          format.js
+          # format.js
          end
       else
-      @listing = Listing.all
+      @list = Listing.all
       end
+
+     
   end
 
    def index
@@ -96,20 +98,24 @@ class ListingsController < ApplicationController
   	@listing= Listing.find(params[:id])
   	user = User.all
 	  	if current_user.id == @listing.user_id || current_user.admin?
-	    @listing.destroy
-		    respond_to do |format|
-		      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
-		      format.json { head :no_content }
-		  	end
-		else
-			flash[:notice]
-			return redirect_to listings_url,notice: 'Sorry. You are not allowed to perform this action'
-		end
+        @listing.destroy
+          respond_to do |format|
+          format.js 
+  		    format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+  		    format.json { head :no_content }
+		   	  end
+		  else
+		 	  flash[:notice]
+		 	  return redirect_to listings_url,notice: 'Sorry. You are not allowed to perform this action'
+		  end
   end
 
   def preview
     @listing = Listing.find(params[:id])
-    @image = @listing.property[0]
+    @image = @listing.property[0] 
+    respond_to do |format|
+      format.json {render json: @image}
+    end
   end
 
   private

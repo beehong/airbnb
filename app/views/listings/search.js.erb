@@ -1,7 +1,0 @@
-$("#list").html();
-<% @listing.each do |country|%>
-	var option = document.createElement("option");
-	option.value = "<%=country%>";
-
-	$("#list").append(option);
-	<%end%>
